@@ -1,7 +1,18 @@
 angular.module('attendapp.controllers', [])
 
-.controller("AppCtrl", function($scope, $ionicModal, $timeout, $http, $rootScope, $state) {
+.controller("AppCtrl", function($scope, $ionicModal, $http, $rootScope, $state, $cordovaBarcodeScanner, Attendee) {
   $scope.user = $rootScope.current_user;
+  $scope.attendees = Attendee.query();
+   $scope.scanQRCode = function() {
+    $cordovaBarcodeScanner.scan().then(function(imageData) {
+        console.log(imageData.text);
+        Attendee.create({ attendee: { name: imageData.text } }, function() {
+          return $state.go('app.welcome');
+        });
+    }, function(error) {
+        console.log("An error happened -> " + error);
+    });
+  };
   return $scope.logout = function() {
     console.log($rootScope);
     return $http["delete"]("https://attendapp-backend.herokuapp.com/sessions/" + $rootScope.current_user.id + ".json").success(function(data) {

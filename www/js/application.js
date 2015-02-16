@@ -1,4 +1,4 @@
-var app = angular.module("attendapp", ["ionic", "LocalForageModule", "attendapp.factories", "attendapp.controllers"])
+var app = angular.module("attendapp", ["ionic", "attendapp.factories", "attendapp.controllers", "ngCordova", "ngResource"])
 
 .run(function($ionicPlatform) {
   return $ionicPlatform.ready(function() {
