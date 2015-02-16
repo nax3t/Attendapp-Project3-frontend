@@ -7,6 +7,7 @@ angular.module('attendapp.controllers', [])
     $cordovaBarcodeScanner.scan().then(function(imageData) {
         console.log(imageData.text);
         Attendee.create({ attendee: { name: imageData.text } }, function() {
+          $scope.attendees = Attendee.query();
           return $state.go('app.welcome');
         });
     }, function(error) {
