@@ -1,0 +1,41 @@
+
+/*  ################################################################
+  1. General styles I implemented (Global Varialbes)
+################################################################# */
+
+* {
+  font-family: 'Lato', sans-serif;
+}
+
+.content h2{
+  font-family: 'Lato', sans-serif;
+}
+.item h2{
+ font-family: 'Lato', sans-serif;
+}
+.item h3{
+ font-family: 'Lato', sans-serif;
+
+}
+.title{
+ font-family: 'Lato', sans-serif;
+ font-weight: bold;
+}
+
+.item p{
+  font-family: 'Lato', sans-serif;
+}
+
+.item-divider {
+  font-family: 'Lato', sans-serif;
+  background-color: #fafafa;
+}
+
+.item .item-content.activated {
+    background-color: #fafafa
+}
+
+
+.foos {
+  font-size: 12px;
+}
