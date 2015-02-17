@@ -5,11 +5,11 @@
 
   <ion-content class="padding">
     <p>Welcome <strong>{{ user.username }}!</strong></p>
-    <ion-option-button class="button-positive" ng-click="scanQRCode()">
-      <i class="glyphicon glyphicon-qrcode"></i> <strong>Scan in</strong>
-    </ion-option-button>
+    <button class="button button-block button-small button-positive" ng-click="scanQRCode()">
+      Scan in
+    </button>
     <ion-list show-delete="shouldShowDelete">
-      <ion-item ng-repeat="attendance in attendances">
+      <ion-item class="text-center" ng-repeat="attendance in attendances">
       	<ion-delete-button class="ion-minus-circled"></ion-delete-button>
         {{ attendance.name }} signed in at {{ attendance.created_at | date:'h:mma' }}
       </ion-item>
