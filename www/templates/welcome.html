@@ -4,12 +4,14 @@
   </ion-nav-buttons>
 
   <ion-content class="padding">
-    <h1>Welcome {{ user.username }}!</h1>
-    <p><a ng-click="scanQRCode()">Scan in</a></p>
+    <p>Welcome <strong>{{ user.username }}!</strong></p>
+    <ion-option-button class="button-positive" ng-click="scanQRCode()">
+      <i class="glyphicon glyphicon-qrcode"></i> <strong>Scan in</strong>
+    </ion-option-button>
     <ion-list show-delete="shouldShowDelete">
       <ion-item ng-repeat="attendance in attendances">
       	<ion-delete-button class="ion-minus-circled"></ion-delete-button>
-        {{ attendance.name }} signed in at {{ attendance.created_at | date:'h:mma on MM/dd/yyyy' }}
+        {{ attendance.name }} signed in at {{ attendance.created_at | date:'h:mma' }}
       </ion-item>
     </ion-list>
     <ion-toggle ng-model="shouldShowDelete">

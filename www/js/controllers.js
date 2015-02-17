@@ -5,8 +5,7 @@ angular.module('attendapp.controllers', [])
   $scope.attendances = Attendance.query();
    $scope.scanQRCode = function() {
     $cordovaBarcodeScanner.scan().then(function(imageData) {
-        console.log(imageData.text);
-        Attendance.create({ attendance: { name: imageData.text } }, function() {
+        Attendance.create({ attendance: { name: imageData.text, user_id: $scope.user.id } }, function() {
           $scope.attendances = Attendance.query();
           return $state.go('app.welcome');
         });
