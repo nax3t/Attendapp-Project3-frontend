@@ -7,9 +7,9 @@
     <h1>Welcome {{ user.username }}!</h1>
     <p><a ng-click="scanQRCode()">Scan in</a></p>
     <ion-list show-delete="shouldShowDelete">
-      <ion-item ng-repeat="attendee in attendees">
+      <ion-item ng-repeat="attendance in attendances">
       	<ion-delete-button class="ion-minus-circled"></ion-delete-button>
-        {{ attendee.name }} signed in at {{ attendee.created_at | date:'h:mma on MM/dd/yyyy' }}
+        {{ attendance.name }} signed in at {{ attendance.created_at | date:'h:mma on MM/dd/yyyy' }}
       </ion-item>
     </ion-list>
     <ion-toggle ng-model="shouldShowDelete">

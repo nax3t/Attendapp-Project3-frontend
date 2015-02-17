@@ -1,13 +1,13 @@
 angular.module('attendapp.controllers', [])
 
-.controller("AppCtrl", function($scope, $ionicModal, $http, $rootScope, $state, $cordovaBarcodeScanner, Attendee) {
+.controller("AppCtrl", function($scope, $ionicModal, $http, $rootScope, $state, $cordovaBarcodeScanner, Attendance) {
   $scope.user = $rootScope.current_user;
-  $scope.attendees = Attendee.query();
+  $scope.attendances = Attendance.query();
    $scope.scanQRCode = function() {
     $cordovaBarcodeScanner.scan().then(function(imageData) {
         console.log(imageData.text);
-        Attendee.create({ attendee: { name: imageData.text } }, function() {
-          $scope.attendees = Attendee.query();
+        Attendance.create({ attendance: { name: imageData.text } }, function() {
+          $scope.attendances = Attendance.query();
           return $state.go('app.welcome');
         });
     }, function(error) {

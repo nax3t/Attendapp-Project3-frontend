@@ -1,8 +1,8 @@
 'use strict';
 
-app.factory('Attendee', function($resource) {
+app.factory('Attendance', function($resource) {
 	// Connect to backend here using $resource
-	return $resource('https://attendapp-backend.herokuapp.com/attendees/:id', {
+	return $resource('https://attendapp-backend.herokuapp.com/attendances/:id', {
 	id: '@id'
 	}, {
 	// Make Attendee.update() available
