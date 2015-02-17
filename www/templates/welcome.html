@@ -9,7 +9,7 @@
     <ion-list show-delete="shouldShowDelete">
       <ion-item ng-repeat="attendee in attendees">
       	<ion-delete-button class="ion-minus-circled"></ion-delete-button>
-        {{ attendee.name }}
+        {{ attendee.name }} signed in at {{ attendee.created_at | date:'h:mma on MM/dd/yyyy' }}
       </ion-item>
     </ion-list>
     <ion-toggle ng-model="shouldShowDelete">
