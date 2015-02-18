@@ -14,7 +14,7 @@
         {{ attendance.name }} signed in at {{ attendance.created_at | date:'h:mma' }}
       </ion-item>
     </ion-list>
-    <ion-toggle ng-model="shouldShowDelete">
+    <ion-toggle ng-model="shouldShowDelete" ng-show="user.admin">
       Show Delete?
     </ion-toggle>
   </ion-content>

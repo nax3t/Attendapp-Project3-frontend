@@ -15,7 +15,7 @@ angular.module('attendapp.controllers', [])
   };
   return $scope.logout = function() {
     console.log($rootScope);
-    return $http["delete"]("https://attendapp-backend.herokuapp.com/sessions/" + $rootScope.current_user.id + ".json").success(function(data) {
+    return $http["delete"]("http://localhost:3000/sessions/" + $rootScope.current_user.id + ".json").success(function(data) {
       return $state.go('main');
     });
   }
@@ -36,7 +36,7 @@ angular.module('attendapp.controllers', [])
 .controller("SessionsCtrl", [
   "$scope", "$http", "$rootScope", "$location", '$state', function($scope, $http, $rootScope, $location, $state) {
     return $scope.addSession = function(loginUser) {
-      return $http.post("https://attendapp-backend.herokuapp.com/login.json", {
+      return $http.post("http://localhost:3000/login.json", {
         user: loginUser
       }).success(function(user) {
         $rootScope.current_user = user;
