@@ -10,7 +10,7 @@
     </button>
     <ion-list show-delete="shouldShowDelete">
       <ion-item ng-repeat="attendance in attendances">
-      	<ion-delete-button class="ion-minus-circled"></ion-delete-button>
+      	<ion-delete-button class="ion-minus-circled" ng-click="deleteAttendance(attendance.id)"></ion-delete-button>
         {{ attendance.name }} signed in at {{ attendance.created_at | date:'h:mma' }}
       </ion-item>
     </ion-list>

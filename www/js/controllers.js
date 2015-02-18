@@ -3,7 +3,16 @@ angular.module('attendapp.controllers', [])
 .controller("AppCtrl", function($scope, $ionicModal, $http, $rootScope, $state, $cordovaBarcodeScanner, Attendance) {
   $scope.user = $rootScope.current_user;
   $scope.attendances = Attendance.query();
-   $scope.scanQRCode = function() {
+  $scope.deleteAttendance = function(attendanceId) {
+    $scope.attendances.forEach(function(attendance, index) {
+      if (attendanceId === attendance.id) {
+        attendance.$delete({ id: attendanceId }, function() {
+          $scope.attendances.splice(index, 1);
+        });
+      }
+    });
+  }
+  $scope.scanQRCode = function() {
     $cordovaBarcodeScanner.scan().then(function(imageData) {
         Attendance.create({ attendance: { name: imageData.text, user_id: $scope.user.id } }, function() {
           $scope.attendances = Attendance.query();
@@ -14,7 +23,6 @@ angular.module('attendapp.controllers', [])
     });
   };
   return $scope.logout = function() {
-    console.log($rootScope);
     return $http["delete"]("http://localhost:3000/sessions/" + $rootScope.current_user.id + ".json").success(function(data) {
       return $state.go('main');
     });

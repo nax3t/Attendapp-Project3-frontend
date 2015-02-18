@@ -8,6 +8,7 @@ app.factory('Attendance', function($resource) {
 	// Make Attendee.update() available
 	'update': { method: 'PUT' },
 	// Make Attendee.create() available
-	'create': { method: 'POST' }
+	'create': { method: 'POST' },
 	});
 });
+
