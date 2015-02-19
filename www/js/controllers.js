@@ -1,6 +1,6 @@
 angular.module('attendapp.controllers', [])
 
-.controller("AppCtrl", ['$scope', '$ionicModal', '$http', '$rootScope', '$state', '$cordovaBarcodeScanner', 'Attendance', function($scope, $ionicModal, $http, $rootScope, $state, $cordovaBarcodeScanner, Attendance) {
+.controller("AppCtrl", ['$scope', '$ionicModal', '$http', '$rootScope', '$state', '$cordovaBarcodeScanner', '$ionicLoading', 'Attendance', function($scope, $ionicModal, $http, $rootScope, $state, $cordovaBarcodeScanner, $ionicLoading, Attendance) {
   $scope.user = $rootScope.current_user;
   $scope.attendances = Attendance.query();
   $scope.refreshAttendance = function() {
@@ -26,7 +26,9 @@ angular.module('attendapp.controllers', [])
     });
   };
   return $scope.logout = function() {
+    $ionicLoading.show();
     return $http["delete"]("https://attendapp-backend.herokuapp.com/sessions/" + $rootScope.current_user.id + ".json").success(function(data) {
+      $ionicLoading.hide()
       return $state.go('main');
     });
   }

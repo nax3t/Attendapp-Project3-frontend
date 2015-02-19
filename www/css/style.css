@@ -23,6 +23,7 @@
 	text-shadow: 1px 1px 0px #5F2C82;
 	font-size: 40px;
 	letter-spacing: 5px;
+		font-weight: bold;
 }
 
 .main-logo {
@@ -33,5 +34,9 @@
 }
 
 .main-padding  {
-	margin: 60px 0px;
+	margin: 50px 0px;
+}
+
+.ion-power-margin {
+	margin-right: 5px;
 }

@@ -1,10 +1,10 @@
-<ion-view title="Welcome" hide-back-button="true">
+<ion-view title="ATTENDAPP" hide-back-button="true">
   <ion-nav-buttons side="left">
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
 
   <ion-content class="padding">
-    <p>Welcome <strong>{{ user.username }}!</strong></p>
+    <h4>Signed in as: <strong>{{ user.username }}</strong></h4>
     <button ng-show="user.admin" class="button button-block button-small button-balanced" ng-click="refreshAttendance()">
       Refresh
     </button>
@@ -14,7 +14,7 @@
     <ion-list show-delete="shouldShowDelete">
       <ion-item ng-repeat="attendance in attendances">
       	<ion-delete-button class="ion-minus-circled" ng-click="deleteAttendance(attendance.id)"></ion-delete-button>
-        {{ attendance.name }} signed in at {{ attendance.created_at | date:'h:mma' }}
+        <strong>{{ attendance.name }}</strong> signed in at <strong>{{ attendance.created_at | date:'h:mma' }}</strong>
       </ion-item>
     </ion-list>
     <ion-toggle ng-model="shouldShowDelete" ng-show="user.admin">
