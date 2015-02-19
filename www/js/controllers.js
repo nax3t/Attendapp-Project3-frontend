@@ -3,6 +3,9 @@ angular.module('attendapp.controllers', [])
 .controller("AppCtrl", function($scope, $ionicModal, $http, $rootScope, $state, $cordovaBarcodeScanner, Attendance) {
   $scope.user = $rootScope.current_user;
   $scope.attendances = Attendance.query();
+  $scope.refreshAttendance = function() {
+    $scope.attendances = Attendance.query();
+  }
   $scope.deleteAttendance = function(attendanceId) {
     $scope.attendances.forEach(function(attendance, index) {
       if (attendanceId === attendance.id) {
