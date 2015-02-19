@@ -1,6 +1,6 @@
 angular.module('attendapp.controllers', [])
 
-.controller("AppCtrl", function($scope, $ionicModal, $http, $rootScope, $state, $cordovaBarcodeScanner, Attendance) {
+.controller("AppCtrl", ['$scope', '$ionicModal', '$http', '$rootScope', '$state', '$cordovaBarcodeScanner', 'Attendance', function($scope, $ionicModal, $http, $rootScope, $state, $cordovaBarcodeScanner, Attendance) {
   $scope.user = $rootScope.current_user;
   $scope.attendances = Attendance.query();
   $scope.refreshAttendance = function() {
@@ -30,14 +30,16 @@ angular.module('attendapp.controllers', [])
       return $state.go('main');
     });
   }
-})
+}])
 
 .controller("UsersCtrl", [
-  "$scope", "$http", '$stateParams', '$state', '$location', '$rootScope', 'User', function($scope, $http, $stateParams, $state, $location, $rootScope, User) {
+  "$scope", "$http", '$state', '$location', '$rootScope', '$ionicLoading', 'User', function($scope, $http, $state, $location, $rootScope, $ionicLoading, User) {
     $scope.newUser = {};
     return $scope.createUser = function() {
+      $ionicLoading.show();
       return User.post($scope.newUser).success(function(data) {
         $rootScope.current_user = data;
+        $ionicLoading.hide();
         return $state.go('app.welcome');
       });
     };
@@ -45,12 +47,14 @@ angular.module('attendapp.controllers', [])
 ])
 
 .controller("SessionsCtrl", [
-  "$scope", "$http", "$rootScope", "$location", '$state', function($scope, $http, $rootScope, $location, $state) {
+  "$scope", "$http", "$rootScope", "$location", '$state', '$ionicLoading', function($scope, $http, $rootScope, $location, $state, $ionicLoading) {
     return $scope.addSession = function(loginUser) {
+      $ionicLoading.show();
       return $http.post("https://attendapp-backend.herokuapp.com/login.json", {
         user: loginUser
       }).success(function(user) {
         $rootScope.current_user = user;
+        $ionicLoading.hide();
         return $state.go('app.welcome');
       });
     };
