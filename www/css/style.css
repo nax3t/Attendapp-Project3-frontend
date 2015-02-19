@@ -7,30 +7,31 @@
   font-family: 'Lato', sans-serif;
 }
 
-.content h2{
-  font-family: 'Lato', sans-serif;
-}
-.item h2{
- font-family: 'Lato', sans-serif;
-}
-.item h3{
- font-family: 'Lato', sans-serif;
 
-}
-.title{
- font-family: 'Lato', sans-serif;
- font-weight: bold;
+.main-bg {
+	background: -webkit-linear-gradient(0deg, #5f2c82 10%, #49a09d 90%); /* Chrome 10+, Saf5.1+ */
+	  background:    -moz-linear-gradient(0deg, #5f2c82 10%, #49a09d 90%); /* FF3.6+ */
+	  background:     -ms-linear-gradient(0deg, #5f2c82 10%, #49a09d 90%); /* IE10 */
+	  background:      -o-linear-gradient(0deg, #5f2c82 10%, #49a09d 90%); /* Opera 11.10+ */
+	  background:         linear-gradient(0deg, #5f2c82 10%, #49a09d 90%); /* W3C */
 }
 
-.item p{
-  font-family: 'Lato', sans-serif;
+.main-header {
+	text-align: center;
+	font-family: 'Lato', sans-serif;
+	color: #FFF;
+	text-shadow: 1px 1px 0px #5F2C82;
+	font-size: 40px;
+	letter-spacing: 5px;
 }
 
-.item-divider {
-  font-family: 'Lato', sans-serif;
-  background-color: #fafafa;
+.main-logo {
+	text-align: center;
+	color: #FFF;
+	text-shadow: 1px 1px 0px #5F2C82;
+	font-size: 50px;
 }
 
-.item .item-content.activated {
-    background-color: #fafafa
+.main-padding  {
+	margin: 60px 0px;
 }
