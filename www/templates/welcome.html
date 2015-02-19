@@ -5,7 +5,7 @@
 
   <ion-content class="padding">
     <p>Welcome <strong>{{ user.username }}!</strong></p>
-    <button class="button button-block button-small button-energized" ng-click="refreshAttendance()">
+    <button ng-show="user.admin" class="button button-block button-small button-balanced" ng-click="refreshAttendance()">
       Refresh
     </button>
     <button ng-hide="user.admin" class="button button-block button-small button-positive" ng-click="scanQRCode()">
