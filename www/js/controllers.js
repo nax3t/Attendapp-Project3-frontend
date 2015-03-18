@@ -27,13 +27,13 @@ angular.module('attendapp.controllers', [])
   };
   return $scope.logout = function() {
     $ionicLoading.show();
-    return $http["delete"]("http://localhost:3000/sessions/" + $rootScope.current_user.id + ".json").success(function(data) {
+    return $http["delete"]("https://attendapp-backend.herokuapp.com/sessions/" + $rootScope.current_user.id + ".json").success(function(data) {
       $ionicLoading.hide()
       return $state.go('main');
     });
   }
 }])
-//https://attendapp-backend.herokuapp.com
+
 .controller("UsersCtrl", [
   "$scope", "$http", '$state', '$rootScope', '$ionicLoading', 'User', function($scope, $http, $state, $rootScope, $ionicLoading, User) {
     $scope.newUser = {};
@@ -61,19 +61,15 @@ angular.module('attendapp.controllers', [])
   "$scope", "$http", "$rootScope", '$state', '$ionicLoading', function($scope, $http, $rootScope, $state, $ionicLoading) {
     return $scope.addSession = function(newUser) {
       $ionicLoading.show();
-      return $http.post("http://localhost:3000/login.json", {
+      return $http.post("https://attendapp-backend.herokuapp.com/login.json", {
         user: newUser
       }).success(function(user) {
         $rootScope.current_user = user;
        $ionicLoading.hide();
         return $state.go('app.welcome');
-      }).error(function(data, status) {
+      }).error(function(data) {
         $ionicLoading.hide();
-        if (status === 400) {
-          $scope.error = "Invalid username or password"
-        }
-        newUser = {};
-        $state.go('login');
+        $scope.error = "Invalid username or password"
       });
     };
   }
