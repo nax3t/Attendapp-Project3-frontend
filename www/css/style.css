@@ -40,3 +40,8 @@
 .ion-power-margin {
 	margin-right: 5px;
 }
+
+.errors {
+	color: red;
+	font-weight: bold;
+}

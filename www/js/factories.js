@@ -6,7 +6,7 @@ UserFactories.factory('User', [
   '$http', function($http) {
     return {
       post: function(newUser) {
-        return $http.post("https://attendapp-backend.herokuapp.com/users.json", {
+        return $http.post("http://localhost:3000/users.json", {
           user: newUser
         });
       }

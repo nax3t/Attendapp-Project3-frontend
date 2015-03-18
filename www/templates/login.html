@@ -2,7 +2,7 @@
   <ion-content class="has-header">
     <form ng-submit="addSession(newUser)">
       <div class="list list-inset">
-
+        <span class="errors">{{ error }}</span>
         <label class="item item-input">
           <input type="text" placeholder="Username" ng-model="newUser.username">
         </label>

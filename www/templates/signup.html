@@ -5,9 +5,11 @@
         <label class="item item-input">
           <input type="text" placeholder="Username" ng-model="newUser.username">
         </label>
+        <span class="errors">{{ username }}</span>
         <label class="item item-input">
           <input type="password" placeholder="Password" ng-model="newUser.password">
         </label>
+        <span class="errors">{{ password }}</span>
         <label class="item item-input">
           <input type="password" placeholder="Password Confirmation" ng-model="newUser.password_confirmation">
         </label>
